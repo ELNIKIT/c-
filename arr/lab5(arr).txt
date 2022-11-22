@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElPrimo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string card = Console.ReadLine();
+            int min = 1, max = 1;
+            for (int i = 0; i < card.Length; i++)
+            {
+                if (min > card[i] - '0')
+                {
+                    min = card[i] - '0';
+                }
+            }
+            for (int i = 0; i < card.Length; i++)
+            {
+                if (max < card[i] - '0')
+                {
+                    max = card[i] - '0';
+                }
+            }
+            string smin = min.ToString();
+            string smax = max.ToString();
+            card = card.Insert(0, smin);
+            card = card.Insert(1, smax);
+            string s = new string(card.Reverse().ToArray());
+            Console.WriteLine(s);
+        }
+    }
+}
