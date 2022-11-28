@@ -1,0 +1,39 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElPrimo
+{
+    class Program
+    {
+        public static void Main()
+        {
+            string[] input = Console.ReadLine().Split(' ');
+            List<string> speech = new List<string>(input);
+
+            bool Infected;
+            char virussymbol = '1';
+
+            foreach (string word in speech)
+            {
+                Infected = true;
+                foreach (char symbol in word)
+                {
+                    if (symbol == virussymbol)
+                    {
+                        Infected = false;
+                    }
+                }
+
+                if (Infected)
+                {
+                    Console.Write(word + " ");
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElPrimo
+{
+    class Program
+    {
+        public static void Main()
+        {
+            ArrayList list = new ArrayList();
+            string bukva = "O";
+            list.AddRange(new string[] { "Q", "Q", "O", "Q" });
+            int index = list.IndexOf(bukva);
+            Console.WriteLine(index);
+        }
+    }
+    }
