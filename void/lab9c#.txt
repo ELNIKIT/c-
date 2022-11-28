@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElPrimo
+{
+    class Program
+    {
+        static int[] Opposite(int[] arr) {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = arr[i] * -1;
+            }
+            return arr;
+        }
+        public static void Main()
+        {
+            int[] array = { -1, 2, -3, 4 };
+            int[] arr = Opposite(array);
+            foreach(int i in arr)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+    }
