@@ -1,0 +1,59 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElPrimo
+{
+    class Program
+    {
+        class Dot
+        {
+            public int x;
+            public int y;
+            public int z;
+            public Dot(int x, int y, int z)
+            {
+                this.x = x;
+                this.y = y; 
+                this.z = z;
+            }
+            public static float Distanse(Dot a, Dot b)
+            {
+                float sub_x = b.x - a.x;
+                float sub_y = b.y - a.y;
+                float sub_z = b.z - a.z;
+                return (float)Math.Sqrt((sub_x * sub_x) + (sub_y * sub_y) + (sub_z * sub_z));
+            }
+            public static float Path(Dot a, Dot b)
+            {
+                float punkt1 = Distanse(a, new Dot(b.x, b.y, a.z));
+                float punkt2 = Distanse(new Dot(b.x, b.y, a.z), b);
+                return punkt1 + punkt2;
+            }
+
+        }
+        
+        public static void Main()
+        {
+            Dot Pavuk = new Dot(3, 3, 3 );
+            Dot Muha = new Dot(1, 2, 2);
+            if(Muha.z == 0)
+            {
+                Console.WriteLine("Муха на чиле, на расслабоне");
+                Console.WriteLine(Dot.Distanse(Pavuk, Muha));
+                Console.WriteLine(Dot.Path(Pavuk, Muha));
+            }
+            else
+            {
+                Console.WriteLine(Dot.Distanse(Pavuk, Muha));
+                Console.WriteLine(Dot.Path(Pavuk, Muha));
+            }
+
+
+        }
+    }
+}

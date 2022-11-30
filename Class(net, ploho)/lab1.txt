@@ -1,0 +1,45 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElPrimo
+{
+    class Program
+    {
+        class Worker
+        {
+            private string Name;
+            private string Surname;
+            private int Rate;
+            private int Days;
+            public Worker(string name, string surname, int rate, int days)
+            {
+                this.Name = name;
+                this.Surname = surname;
+                this.Rate = rate;
+                this.Days = days;
+            }
+            public int Getsalary()
+            {
+                return Rate * Days;
+
+            }
+            public string GetFullName()
+            {
+                return Name + " " + Surname;
+            }
+        }
+        public static void Main()
+        {
+            Worker Nikita = new Worker("Nikita", "Gay", 10000, 14 );
+            Console.WriteLine((int)Nikita.Getsalary());
+            Console.WriteLine(Nikita.GetFullName());
+
+
+        }
+    }
+}
