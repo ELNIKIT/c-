@@ -1,0 +1,34 @@
+namespace ElPrimo
+{
+    class Leon
+    {
+        public class Watch
+        {
+            private string brand;
+            private string type;
+            private decimal cost;
+
+            Watch()
+            {
+                string brand = "null";
+                string type = "null";
+                decimal cost = 0;
+            }
+            public Watch(string brand, string type, decimal cost)
+            {
+                this.brand = brand;
+                this.type = type;
+                this.cost = cost;
+            }
+            public void Print()
+            {
+                Console.WriteLine($"Brand: {brand} type: {type} cost: {cost}");
+            }
+        }
+        public static void Main()
+        {
+            var myWatch = new Watch("Casio", "electronic", 15.99M);
+            myWatch.Print();
+        }
+    }
+}

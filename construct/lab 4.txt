@@ -1,0 +1,109 @@
+namespace ElPrimo
+{
+    class Leon
+    {
+        public class Money
+        {
+            private int ruble;
+            private int copeika;
+            public Money() {
+                ruble = 0;
+                copeika = 0;
+            }
+            public Money(string value , string moneytype)
+            {
+                if (int.Parse(value) < 0)
+                {
+                    Console.WriteLine("Не может быть отрицательным!");
+                }
+                switch (moneytype)
+                {
+                    case "р.":
+                        ruble += int.Parse(value);
+                        break;
+                    case "коп.":
+                        copeika += int.Parse(value);
+                        ruble = copeika / 100;
+                        copeika = copeika % 100;
+                        break;
+                    default:
+                        Console.WriteLine("Слава, что ты сделал?");
+                        break;
+                }
+            }
+            public Money(string value, string moneytype, string value2, string moneytype2)
+            {
+                if (int.Parse(value) < 0 || int.Parse(value2) < 0)
+                {
+                    Console.WriteLine("Не может быть отрицательным!");
+                }
+                if(moneytype == "коп.")
+                {
+                    copeika = int.Parse(value);
+                    ruble = int.Parse(value2) + copeika / 100;
+                    copeika = copeika % 100;
+                    Console.WriteLine("Рубли и копейки перепутаны местами!");
+                }
+                else
+                {
+                    copeika = int.Parse(value2);
+                    ruble = int.Parse(value) + copeika / 100;
+                    copeika = copeika % 100;
+                }
+            }
+            public Money(int ruble, int copeika)
+            {
+                this.ruble = ruble;
+                this.copeika = copeika;
+            }
+
+            public static Money Sum(Money a, Money b)
+            {
+                return new Money(a.ruble + b.ruble, a.copeika + b.copeika);
+            }
+            public static Money Difference(Money a, Money b)
+            {
+                
+                int dif = (a.ruble * 100 + a.copeika) - (b.ruble * 100 + b.copeika);
+                if(dif < 0)
+                {
+                    dif = Math.Abs(dif);
+                    return new Money(dif / 100, dif % 100);
+                }
+                else
+                {
+                    return new Money(dif / 100, dif % 100);
+                }
+            }
+            public void Print()
+            {
+                if (ruble < 0)
+                {
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine($"{ruble} р. и {copeika} коп.");
+                }
+            }
+            public void PrintTransferCost(float com)
+            {
+                int convert = ruble * 100 + copeika;
+                int result = (int)Math.Ceiling(convert * com);
+                Console.WriteLine($"{result / 100} р. и {result % 100} коп.");
+            }
+        }
+        public static void Main()
+        {
+            Money nigger = new Money(20, 15);
+            Money vzlomjopi = new Money(30, 15);
+            Money money;
+            money = Money.Difference(nigger, vzlomjopi);
+            money.Print();
+            money = Money.Sum(nigger, vzlomjopi);
+            money.Print();
+            nigger.PrintTransferCost(0.05f);
+
+        }
+    }
+}
