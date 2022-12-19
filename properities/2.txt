@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+namespace ElPrimo
+{
+    class Program
+    {
+        public class Vasya
+        {
+            private string Name;
+            private int Age;
+            public Vasya(int age, string name = "Вася")
+            {
+                if(name != "Вася")
+                {
+                    Name = $"Я не {name}, а Василий!";
+                }
+                if(age < 0)
+                {
+                    Age = 0;
+                }
+                else if(age > 122)
+                {
+                    Age = 122;
+                }
+                else
+                {
+                    Age = age;
+                }
+            }
+            public int GetAge()
+            {
+                return Age;
+            }
+            public string GetName()
+            {
+                return Name;
+            }
+            public void RunMe()
+            {
+                Console.WriteLine("Сюрпрайз!!!");
+            }
+        }
+        public static void Main()
+        {
+            Vasya vasyan = new Vasya(18, "Никита");
+            Vasya Surpise = new Vasya(666, "Пасхалка");
+            Console.WriteLine($"{vasyan.GetName()}");
+            int lastNumberAge = vasyan.GetAge() % 10;
+            switch (lastNumberAge)
+            {
+                case 1:
+                    Console.WriteLine($"Мне {vasyan.GetAge()} год");
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    Console.WriteLine($"Мне {vasyan.GetAge()} года");
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 0:
+                    Console.WriteLine($"Мне {vasyan.GetAge()} лет");
+                    break;
+            }
+            Surpise.RunMe();
+            }
+        }
+    }
